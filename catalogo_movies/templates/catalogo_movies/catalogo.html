@@ -1,0 +1,21 @@
+<!-- catalogo_peliculas/templates/catalogo_peliculas/catalogo.html -->
+<html>
+<head>
+    
+</head>
+<body>
+    <h1>Catálogo de Películas</h1>
+    <h2>Filtrar por Categoría:</h2>
+    <ul>
+        {% for categoria in categorias %}
+        <li><a href="?categoria={{ categoria.id }}">{{ categoria.nombre }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Películas:</h2>
+    <ul>
+        {% for pelicula in peliculas %}
+        <li>{{ pelicula.titulo }} - Categorías: {{ pelicula.categorias.all|join:", " }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
