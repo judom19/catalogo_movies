@@ -1,0 +1,9 @@
+
+entorno_catalogo_movies
+*db.sqlite3
+*.pyc
+*.pyo
+__pycache__/
+.idea/
+.vscode/
+**/migrations/
