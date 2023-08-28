@@ -1,9 +1,10 @@
 
 entorno_catalogo_movies
-*db.sqlite3
+catalogo_movies/db.sqlite3
 *.pyc
 *.pyo
 __pycache__/
 .idea/
 .vscode/
 **/migrations/
+catalogo_movies/catalogo_movies/secret.py
