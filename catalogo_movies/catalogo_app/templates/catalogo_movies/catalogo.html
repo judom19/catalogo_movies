@@ -1,21 +1,126 @@
-<!-- catalogo_peliculas/templates/catalogo_peliculas/catalogo.html -->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Películas</title>
+
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Catálogo de Películas</h1>
-    <h2>Filtrar por Categoría:</h2>
-    <ul>
-        {% for categoria in categorias %}
-        <li><a href="?categoria={{ categoria.id }}">{{ categoria.nombre }}</a></li>
-        {% endfor %}
-    </ul>
-    <h2>Películas:</h2>
-    <ul>
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="/">Catálogo de Películas</a>
+            <ul class="nav-links">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/categorias">Categorías</a></li>
+                <li><a href="/novedades">Novedades</a></li>
+                <!-- Agrega más enlaces de navegación si es necesario -->
+            </ul>
+        </nav>
+    </header>
+
+    <div class="movie-catalog">
+        <!-- Ciclo para mostrar cada película en la base de datos -->
         {% for pelicula in peliculas %}
-        <li>{{ pelicula.titulo }} - Categorías: {{ pelicula.categorias.all|join:", " }}</li>
+        <div class="movie-card">
+            <img src="{{ pelicula.imagen_url }}" alt="{{ pelicula.titulo }}">
+            <h2>{{ pelicula.titulo }}</h2>
+            <p>{{ pelicula.descripcion }}</p>
+            <p>Categorías: {{ pelicula.categorias.all|join:", " }}</p>
+        </div>
+        <!-- Final del ciclo -->
         {% endfor %}
-    </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Catálogo de Películas</p>
+    </footer>
 </body>
+<style>
+    /* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo de la barra de navegación (navbar) */
+header {
+    background-color: #232f3e;
+    color: white;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+/* Estilo del catálogo de películas */
+.movie-catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.movie-card {
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+}
+
+.movie-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.movie-card h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.movie-card p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Estilo del pie de página */
+footer {
+    background-color: #232f3e;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+</style>
 </html>
