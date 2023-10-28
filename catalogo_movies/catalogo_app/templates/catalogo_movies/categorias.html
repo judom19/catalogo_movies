@@ -1,0 +1,29 @@
+{% extends "catalogo_movies/base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <!-- bucle para mostrar cada categoria y las peliculas que pertenecen a ella -->
+        {% for item in categorias_y_peliculas %}
+        <h2 class="bg-light p-3 text-center border rounder border-3"><span class="text-primary">{{ item.categoria.nombre }}</span></h2>
+        
+        <!-- bucle para mostrar las peliculas de esta categoria -->
+        <div class="row">
+            {% for pelicula in item.peliculas %}
+            <div class="col-md-3 mb-4">
+                <div class="card" style="border-radius: 20px;">
+                    <img src="{{ pelicula.imagen }}" class="card-img-top" alt="{{ pelicula.titulo }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ pelicula.titulo }}</h5>
+                        <p class="card-text">{{ pelicula.descripcion }}</p>
+                        <p class="card-text sinopsis" style="display: none;">{{ pelicula.sinopsis }}</p>
+                        <a href="#" class="btn btn-primary leer-sinopsis">Leer Sinopsis</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- final del bucle para peliculas -->
+        {% endfor %}
+        <!-- final del bucle para categorias -->
+    </div>
+{% endblock content %}

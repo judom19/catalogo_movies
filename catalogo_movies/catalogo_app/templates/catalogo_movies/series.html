@@ -1,0 +1,23 @@
+{% extends "catalogo_movies/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- bucle para mostrar cada serie en la base de datos -->
+        {% for serie in series %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="{{ serie.imagen_serie }}" class="card-img-top" alt="{{ serie.titulo_serie }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ serie.titulo_serie }}</h5>
+                    <p class="card-text sinopsis" style="display: none;">{{ serie.sinopsis_serie }}</p>
+                    <a href="#" class="btn btn-primary leer-sinopsis">Leer Sinopsis...</a>
+                    <p class="card-text">
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
